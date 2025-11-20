@@ -24,7 +24,6 @@ export default function ExperienceSection() {
                     <SectionHeader
                         title="Experience"
                         subtitle="My academic and professional journey."
-                        className="text-center items-center flex flex-col"
                     />
                 </ScrollReveal>
 
