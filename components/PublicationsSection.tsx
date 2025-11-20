@@ -33,7 +33,7 @@ export default function PublicationsSection() {
 
                 {/* Filter Tabs */}
                 <ScrollReveal variant="fadeUp" delay={0.2}>
-                    <div className="flex flex-wrap gap-4 mb-12 ml-11 justify-center md:justify-start">
+                    <div className="flex flex-wrap gap-4 mb-12 justify-start">
                         {['All', 'Conference', 'Journal', 'Workshop', 'Preprint'].map((type) => (
                             <button
                                 key={type}

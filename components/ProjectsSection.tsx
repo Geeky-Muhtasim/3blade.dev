@@ -31,7 +31,7 @@ export default function ProjectsSection() {
 
                 {/* Filter Tabs */}
                 <ScrollReveal variant="fadeUp" delay={0.2}>
-                    <div className="flex flex-wrap gap-4 mb-12 ml-11 justify-center md:justify-start">
+                    <div className="flex flex-wrap gap-4 mb-12 justify-start">
                         {categories.map((category) => (
                             <button
                                 key={category}
