@@ -87,12 +87,14 @@
 
   body {
     @apply bg-background text-foreground;
+    overflow-x: hidden;
   }
 }
 
 html {
   scroll-behavior: smooth;
   font-size: 15.5px;
+  overflow-x: hidden;
 }
 
 /* Custom Scrollbar */
