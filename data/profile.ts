@@ -394,7 +394,6 @@ export const profile = {
                 "Contributed to enterprise audit automation, internal inspection tools, and secure customer onboarding modules using AI-assisted workflows.",
             responsibilities: [
                 "Helped build the Smart Audit Management System with automated rule-based findings from policy documents",
-                "Developed an early version of the ICT Risk Inspection Tool, enabling structured inspection and compliance scoring",
                 "Enhanced the Lead Management System with OTP login, role control, and high-security activity logging",
                 "Developed modules for the eKYC mobile app including cloth detection, OCR-based NID extraction, and liveness verification",
                 "Supported backend architecture improvements for enterprise-grade reliability and security"
