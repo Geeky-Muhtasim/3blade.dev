@@ -356,7 +356,7 @@ export const profile = {
             role: "Software Engineer",
             organization: "Bangladesh Finance PLC",
             location: "Dhaka, Bangladesh",
-            period: "Aug 2024 – Present",
+            period: "Sep 2025 – Present",
             type: "Full-time",
             description:
                 "Building unified AI-powered systems for audit automation, policy compliance analysis, ICT risk inspection, and secure enterprise workflow modernization.",
@@ -388,7 +388,7 @@ export const profile = {
             role: "Software Engineer (Intern)",
             organization: "Bangladesh Finance PLC",
             location: "Dhaka, Bangladesh",
-            period: "Apr 2024 – Aug 2024",
+            period: "Apr 2025 – Aug 2025",
             type: "Internship",
             description:
                 "Contributed to enterprise audit automation, internal inspection tools, and secure customer onboarding modules using AI-assisted workflows.",
@@ -418,7 +418,7 @@ export const profile = {
             role: "Research Intern",
             organization: "Center for Computational & Data Sciences (CCDS), IUB",
             location: "Dhaka, Bangladesh",
-            period: "Jan 2024 – Present",
+            period: "Jan 2025 – Present",
             type: "Research",
             description:
                 "Conducting research on NLP, LLMs, and educational AI with a focus on Bangla and AI-powered tutoring systems.",
@@ -440,7 +440,7 @@ export const profile = {
             role: "Undergraduate Researcher",
             organization: "Center for Computational & Data Sciences (CCDS), IUB",
             location: "Dhaka, Bangladesh",
-            period: "Sep 2023 – Dec 2023",
+            period: "Sep 2023 – Dec 2024",
             type: "Research",
             description:
                 "Undergraduate thesis on LLM-powered Python tutoring and human–AI interaction in learning environments.",
@@ -461,7 +461,7 @@ export const profile = {
             role: "Junior ML Engineer",
             organization: "Omdena Liberia Chapter",
             location: "Remote",
-            period: "Jun 2023 – Aug 2023",
+            period: "Jan 2024 – July 2024",
             type: "Volunteer",
             description:
                 "Built machine learning models for malaria risk prediction in a global, impact-driven collaboration.",
