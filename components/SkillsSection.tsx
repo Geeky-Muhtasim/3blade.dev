@@ -9,9 +9,11 @@ import { ScrollReveal } from './ScrollReveal'
 export default function SkillsSection() {
     return (
         <section id="skills" className="py-24 lg:py-32 relative">
+            {/* Subtle Background Gradient */}
+            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/20 to-transparent pointer-events-none" />
 
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-                <ScrollReveal variant="fadeUp" className="mb-12">
+                <ScrollReveal variant="fadeUp" className="mb-12" width="100%">
                     <SectionHeader
                         title="Technical Arsenal"
                         subtitle="Tools and technologies I use to bring ideas to life."

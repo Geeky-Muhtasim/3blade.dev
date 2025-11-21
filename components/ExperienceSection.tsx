@@ -1,7 +1,7 @@
 "use client"
 
 import { motion } from 'framer-motion'
-import { Briefcase, GraduationCap, Sword, Book, Shield, Globe } from 'lucide-react'
+import { Briefcase, GraduationCap, Sword, Book, Shield, Globe, MapPin } from 'lucide-react'
 import { profile } from '@/data/profile'
 import { cn } from '@/lib/utils'
 import SectionHeader from './SectionHeader'
@@ -20,10 +20,10 @@ export default function ExperienceSection() {
         <section id="experience" className="py-24 lg:py-32 relative">
 
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-                <ScrollReveal variant="fadeUp" className="mb-16">
+                <ScrollReveal variant="fadeUp" className="mb-12" width="100%">
                     <SectionHeader
                         title="Experience"
-                        subtitle="My academic and professional journey."
+                        subtitle="My professional journey and contributions."
                     />
                 </ScrollReveal>
 
@@ -68,13 +68,17 @@ export default function ExperienceSection() {
                                         </h3>
 
                                         <div className={cn(
-                                            "flex items-center gap-2 text-muted-foreground mb-4 text-sm",
-                                            index % 2 === 0 ? "" : "md:justify-end"
+                                            "flex flex-col gap-1.5 text-muted-foreground mb-4 text-sm",
+                                            index % 2 === 0 ? "items-start" : "md:items-end items-start"
                                         )}>
-                                            <Briefcase size={14} />
-                                            <span>{exp.organization}</span>
-                                            <span>•</span>
-                                            <span>{exp.location}</span>
+                                            <div className="flex items-center gap-2">
+                                                <Briefcase size={14} className="flex-shrink-0" />
+                                                <span className="font-medium text-foreground/80">{exp.organization}</span>
+                                            </div>
+                                            <div className="flex items-center gap-2">
+                                                <MapPin size={14} className="flex-shrink-0" />
+                                                <span>{exp.location}</span>
+                                            </div>
                                         </div>
 
                                         <p className="text-muted-foreground text-sm mb-4 leading-relaxed">
@@ -85,7 +89,7 @@ export default function ExperienceSection() {
                                             "space-y-2",
                                             index % 2 === 0 ? "" : "md:items-end flex flex-col"
                                         )}>
-                                            {exp.responsibilities.slice(0, 2).map((resp, i) => (
+                                            {exp.responsibilities.map((resp, i) => (
                                                 <li key={i} className="flex items-start gap-2 text-sm text-muted-foreground">
                                                     <span className="mt-1.5 w-1.5 h-1.5 bg-primary rounded-full flex-shrink-0" />
                                                     <span>{resp}</span>

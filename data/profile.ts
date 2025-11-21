@@ -14,7 +14,7 @@ export const profile = {
     },
 
     stats: {
-        publications: 6,
+        publications: 5,
         projects: 8,
         yearsExperience: 2,
     },
@@ -121,7 +121,7 @@ export const profile = {
                 "M Ashraful Amin",
                 "Amin Ahsan Ali"
             ],
-            venue: "CHI 2025 Extended Abstracts",
+            venue: "Proceedings of the Extended Abstracts of the CHI Conference on Human Factors in Computing Systems",
             year: 2025,
             type: "Extended Abstract",
             tags: ["HCI", "EdTech", "User Study", "LLM"],
@@ -129,7 +129,7 @@ export const profile = {
                 "A controlled user study on the PACE tutoring system demonstrating improvements in engagement and conceptual understanding using LLM-based guidance.",
             links: {
                 pdf: "",
-                acm: ""
+                publisher: "https://dl.acm.org/doi/10.1145/3706599.3720240"
             },
             contribution:
                 "Lead researcher — System design, experiment setup, data collection, statistical analysis.",
@@ -163,7 +163,7 @@ export const profile = {
                 "Proposes an MPNet-based ensemble approach for detecting and localizing pedagogical mistakes in AI-generated tutoring responses.",
             links: {
                 pdf: "",
-                anthology: ""
+                publisher: "https://aclanthology.org/2025.bea-1.102/"
             },
             contribution: "Model architecture design, ensemble strategy, evaluation.",
             impact:
@@ -216,7 +216,7 @@ export const profile = {
                 "An IoT-assisted computer vision framework for real-time fruit quality detection and automated classification.",
             links: {
                 pdf: "",
-                ieee: ""
+                publisher: "https://ieeexplore.ieee.org/document/10237165/"
             },
             contribution:
                 "Real time IoT based fruit quality detection and monitoring system.",
@@ -359,25 +359,28 @@ export const profile = {
             period: "Aug 2024 – Present",
             type: "Full-time",
             description:
-                "Designing and deploying AI-powered FinTech systems for audit, eKYC, and portfolio intelligence.",
+                "Building unified AI-powered systems for audit automation, policy compliance analysis, ICT risk inspection, and secure enterprise workflow modernization.",
             responsibilities: [
-                "Led development of Smart Audit Management System with RAG-based document analysis and automated findings",
-                "Architected and extended Lead Management CRM with OTP authentication, audit logging, and role-based access",
-                "Productized XBroker portfolio analyzer to process multi-broker PDF statements into unified, summarized profiles"
+                "Designed a unified intelligent document processing pipeline to automate audit reporting across multiple policy documents",
+                "Developed a Smart ICT Risk Inspection Tool with structured scoring, reporting, and automated inspection summaries",
+                "Enhanced Audit Management System with role-based access control, a comprehensive analytics dashboard, and automated audit trails",
+                "Expanded the Lead Management System with secure OTP flows, improved access control, and modular feature extensions",
+                "Built reusable backend modules ensuring scalable FinTech-grade security and operational reliability"
             ],
             techStack: [
                 "FastAPI",
-                "Flutter",
                 "PostgreSQL",
+                "Flutter",
                 "LangChain",
-                "RAG",
+                "Groq",
+                "RAG Pipelines",
                 "ML Kit",
-                "Groq"
+                "JWT Auth"
             ],
             achievements: [
-                "Reduced manual audit review effort by ~60%",
-                "Improved onboarding throughput via eKYC automation",
-                "Significantly reduced manual effort in broker profile preparation"
+                "Enabled 60% faster audit cycle by automating cross-policy compliance analysis",
+                "Delivered a production-ready ICT risk inspection tool used across branches",
+                "Improved LAM & CRM performance and reduced manual workload through secure workflow automation"
             ]
         },
         {
@@ -388,25 +391,26 @@ export const profile = {
             period: "Apr 2024 – Aug 2024",
             type: "Internship",
             description:
-                "Contributed to in-house ERP modules and AI-assisted workflows for audit, assets, and customer onboarding.",
+                "Contributed to enterprise audit automation, internal inspection tools, and secure customer onboarding modules using AI-assisted workflows.",
             responsibilities: [
-                "Implemented core modules of Smart Audit Management System and internal inspection tooling",
-                "Developed eKYC mobile app features including ML-powered face verification and liveness detection",
-                "Helped build Comprehensive Asset Management System for multi-branch asset tracking",
-                "Contributed to Lead Management CRM with OTP-based login and activity logging"
+                "Helped build the Smart Audit Management System with automated rule-based findings from policy documents",
+                "Developed an early version of the ICT Risk Inspection Tool, enabling structured inspection and compliance scoring",
+                "Enhanced the Lead Management System with OTP login, role control, and high-security activity logging",
+                "Developed modules for the eKYC mobile app including cloth detection, OCR-based NID extraction, and liveness verification",
+                "Supported backend architecture improvements for enterprise-grade reliability and security"
             ],
             techStack: [
                 "FastAPI",
                 "Flutter",
                 "PostgreSQL",
                 "LangChain",
-                "RAG",
+                "Groq",
                 "ML Kit",
-                "Groq"
+                "pytesseract"
             ],
             achievements: [
-                "Supported rollout of AI-enabled audit and eKYC flows to production",
-                "Collaborated with cross-functional teams (ICT, business, and operations) to refine requirements"
+                "Played a key role in rolling out audit and inspection automation modules to production environments",
+                "Built foundational modules for eKYC and security-based internal tools used by ICT & Operations teams"
             ]
         },
         {
@@ -442,7 +446,7 @@ export const profile = {
                 "Undergraduate thesis on LLM-powered Python tutoring and human–AI interaction in learning environments.",
             responsibilities: [
                 "Designed and implemented the PACE LLM-based Python tutoring system architecture",
-                "Conducted a user study with 150+ students to evaluate engagement and learning gains",
+                "Conducted a user study with 25+ students to evaluate engagement and learning gains",
                 "Analyzed quantitative and qualitative metrics to understand tutor effectiveness",
                 "Prepared manuscript that led to CHI 2025 Extended Abstracts publication"
             ],

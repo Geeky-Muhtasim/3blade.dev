@@ -34,7 +34,7 @@ export default function ContactSection() {
             <div className="absolute inset-0 bg-gradient-to-t from-primary/10 via-transparent to-transparent pointer-events-none" />
 
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-                <ScrollReveal variant="fadeUp">
+                <ScrollReveal variant="fadeUp" width="100%">
                     <SectionHeader
                         title="Get In Touch"
                         subtitle="Let's collaborate or just say hi."

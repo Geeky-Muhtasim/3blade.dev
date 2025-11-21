@@ -22,7 +22,7 @@ export default function ProjectsSection() {
         <section id="projects" className="py-24 lg:py-32 relative">
 
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-                <ScrollReveal variant="fadeUp">
+                <ScrollReveal variant="fadeUp" width="100%">
                     <SectionHeader
                         title="Featured Projects"
                         subtitle="A selection of my work in AI, NLP, and Software Engineering."
@@ -30,8 +30,8 @@ export default function ProjectsSection() {
                 </ScrollReveal>
 
                 {/* Filter Tabs */}
-                <ScrollReveal variant="fadeUp" delay={0.2}>
-                    <div className="flex flex-wrap gap-4 mb-12 justify-start">
+                <ScrollReveal variant="fadeUp" delay={0.2} width="100%">
+                    <div className="flex flex-wrap gap-4 mb-12 justify-start md:justify-center">
                         {categories.map((category) => (
                             <button
                                 key={category}

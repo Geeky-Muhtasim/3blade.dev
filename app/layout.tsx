@@ -18,6 +18,9 @@ export const metadata: Metadata = {
   title: "Muhtasim Ibteda Shochcho | NLP Researcher & AI Engineer",
   description: "AI-enabled Software Engineer seeking PhD in NLP, Language Modeling, Mechanistic Interpretability & AI Security.",
   keywords: ["NLP", "AI", "Machine Learning", "Researcher", "Portfolio", "Muhtasim Ibteda Shochcho"],
+  icons: {
+    icon: "/battle.png",
+  },
 };
 
 export default function RootLayout({
