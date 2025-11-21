@@ -353,7 +353,7 @@ export const profile = {
     experience: [
         {
             id: "exp-1",
-            role: "AI-Enabled Software Engineer",
+            role: "Software Engineer",
             organization: "Bangladesh Finance PLC",
             location: "Dhaka, Bangladesh",
             period: "Aug 2024 – Present",
@@ -385,7 +385,7 @@ export const profile = {
         },
         {
             id: "exp-2",
-            role: "AI-Enabled Software Engineer (Intern)",
+            role: "Software Engineer (Intern)",
             organization: "Bangladesh Finance PLC",
             location: "Dhaka, Bangladesh",
             period: "Apr 2024 – Aug 2024",
