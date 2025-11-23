@@ -43,11 +43,10 @@ export default function ContactSection() {
 
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24">
                     {/* Contact Info */}
-                    <motion.div
-                        initial={{ opacity: 0, x: -50 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: 0.2 }}
+                    <ScrollReveal
+                        variant="slideRight"
+                        delay={0.2}
+                        width="100%"
                     >
                         <h3 className="text-2xl font-bold text-foreground mb-6">
                             Let's Build Something Amazing
@@ -116,74 +115,74 @@ export default function ContactSection() {
                                 </a>
                             </div>
                         </div>
-                    </motion.div>
+                    </ScrollReveal>
 
                     {/* Contact Form */}
-                    <motion.div
-                        initial={{ opacity: 0, x: 50 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: 0.4 }}
-                        className="bg-card/50 border border-border rounded-2xl p-8 md:p-10 relative overflow-hidden"
+                    <ScrollReveal
+                        variant="slideLeft"
+                        delay={0.4}
+                        width="100%"
                     >
-                        {/* Decorative glow */}
-                        <div className="absolute -top-20 -right-20 w-64 h-64 bg-primary/10 rounded-full blur-3xl pointer-events-none" />
+                        <div className="bg-card/50 border border-border rounded-2xl p-8 md:p-10 relative overflow-hidden">
+                            {/* Decorative glow */}
+                            <div className="absolute -top-20 -right-20 w-64 h-64 bg-primary/10 rounded-full blur-3xl pointer-events-none" />
 
-                        <form onSubmit={handleSubmit} className="space-y-6 relative z-10">
-                            <div>
-                                <label htmlFor="name" className="block text-sm font-medium text-muted-foreground mb-2">
-                                    Name
-                                </label>
-                                <input
-                                    type="text"
-                                    id="name"
-                                    name="name"
-                                    value={formState.name}
-                                    onChange={handleChange}
-                                    required
-                                    className="w-full bg-muted/50 border border-border rounded-lg px-4 py-3 text-foreground focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors placeholder-muted-foreground"
-                                    placeholder="Roronoa Zoro"
-                                />
-                            </div>
-                            <div>
-                                <label htmlFor="email" className="block text-sm font-medium text-muted-foreground mb-2">
-                                    Email
-                                </label>
-                                <input
-                                    type="email"
-                                    id="email"
-                                    name="email"
-                                    value={formState.email}
-                                    onChange={handleChange}
-                                    required
-                                    className="w-full bg-muted/50 border border-border rounded-lg px-4 py-3 text-foreground focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors placeholder-muted-foreground"
-                                    placeholder="zoro@strawhats.com"
-                                />
-                            </div>
-                            <div>
-                                <label htmlFor="message" className="block text-sm font-medium text-muted-foreground mb-2">
-                                    Message
-                                </label>
-                                <textarea
-                                    id="message"
-                                    name="message"
-                                    value={formState.message}
-                                    onChange={handleChange}
-                                    required
-                                    rows={5}
-                                    className="w-full bg-muted/50 border border-border rounded-lg px-4 py-3 text-foreground focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors placeholder-muted-foreground resize-none"
-                                    placeholder="I want to become the world's greatest swordsman..."
-                                />
-                            </div>
-                            <button
-                                type="submit"
-                                className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-bold py-4 rounded-lg transition-all transform hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-2 shadow-lg shadow-primary/20"
-                            >
-                                <Send size={20} />
-                                Send Message
-                            </button>
-                        </form>
-                    </motion.div>
+                            <form onSubmit={handleSubmit} className="space-y-6 relative z-10">
+                                <div>
+                                    <label htmlFor="name" className="block text-sm font-medium text-muted-foreground mb-2">
+                                        Name
+                                    </label>
+                                    <input
+                                        type="text"
+                                        id="name"
+                                        name="name"
+                                        value={formState.name}
+                                        onChange={handleChange}
+                                        required
+                                        className="w-full bg-muted/50 border border-border rounded-lg px-4 py-3 text-foreground focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors placeholder-muted-foreground"
+                                        placeholder="Roronoa Zoro"
+                                    />
+                                </div>
+                                <div>
+                                    <label htmlFor="email" className="block text-sm font-medium text-muted-foreground mb-2">
+                                        Email
+                                    </label>
+                                    <input
+                                        type="email"
+                                        id="email"
+                                        name="email"
+                                        value={formState.email}
+                                        onChange={handleChange}
+                                        required
+                                        className="w-full bg-muted/50 border border-border rounded-lg px-4 py-3 text-foreground focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors placeholder-muted-foreground"
+                                        placeholder="zoro@strawhats.com"
+                                    />
+                                </div>
+                                <div>
+                                    <label htmlFor="message" className="block text-sm font-medium text-muted-foreground mb-2">
+                                        Message
+                                    </label>
+                                    <textarea
+                                        id="message"
+                                        name="message"
+                                        value={formState.message}
+                                        onChange={handleChange}
+                                        required
+                                        rows={5}
+                                        className="w-full bg-muted/50 border border-border rounded-lg px-4 py-3 text-foreground focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors placeholder-muted-foreground resize-none"
+                                        placeholder="I want to become the world's greatest swordsman..."
+                                    />
+                                </div>
+                                <button
+                                    type="submit"
+                                    className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-bold py-4 rounded-lg transition-all transform hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-2 shadow-lg shadow-primary/20"
+                                >
+                                    <Send size={20} />
+                                    Send Message
+                                </button>
+                            </form>
+                        </div>
+                    </ScrollReveal>
                 </div>
             </div>
         </section>

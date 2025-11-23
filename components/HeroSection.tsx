@@ -34,25 +34,25 @@ export default function HeroSection() {
                             </ScrollReveal>
 
                             {/* Sword Slash Divider */}
-                            <ScrollReveal variant="scaleIn" delay={0.4} width="100%" className="flex justify-center lg:justify-start">
+                            <ScrollReveal variant="scaleIn" delay={0.3} width="100%" className="flex justify-center lg:justify-start">
                                 <div className="h-[3px] w-24 bg-gradient-to-r from-primary to-transparent rounded-full mt-4 mb-6"></div>
                             </ScrollReveal>
 
-                            <ScrollReveal variant="fadeUp" delay={0.5}>
+                            <ScrollReveal variant="fadeUp" delay={0.3}>
                                 <h2 className="text-2xl md:text-3xl text-muted-foreground font-light">
                                     {profile.title}
                                 </h2>
                             </ScrollReveal>
                         </div>
 
-                        <ScrollReveal variant="fadeUp" delay={0.6}>
+                        <ScrollReveal variant="fadeUp" delay={0.4}>
                             <p className="text-lg text-muted-foreground max-w-2xl mx-auto lg:mx-0 leading-relaxed">
                                 Building safer, more interpretable AI systems through natural language processing and machine learning research.
                             </p>
                         </ScrollReveal>
 
                         {/* Buttons */}
-                        <ScrollReveal variant="fadeUp" delay={0.7}>
+                        <ScrollReveal variant="fadeUp" delay={0.5}>
                             <div className="flex flex-wrap gap-4 justify-center lg:justify-start">
                                 <Link href="#research">
                                     <motion.button
@@ -76,7 +76,7 @@ export default function HeroSection() {
                         </ScrollReveal>
 
                         {/* Social Icons */}
-                        <ScrollReveal variant="fadeUp" delay={0.8}>
+                        <ScrollReveal variant="fadeUp" delay={0.6}>
                             <div className="flex gap-6 justify-center lg:justify-start pt-4">
                                 <SocialIcon href={profile.socials.github} icon={<Github />} label="GitHub" />
                                 <SocialIcon href={profile.socials.linkedin} icon={<Linkedin />} label="LinkedIn" />
@@ -86,7 +86,7 @@ export default function HeroSection() {
                         </ScrollReveal>
 
                         {/* Stats */}
-                        <ScrollReveal variant="fadeIn" delay={1.0}>
+                        <ScrollReveal variant="fadeIn" delay={0.7}>
                             <div className="grid grid-cols-3 gap-8 pt-8 border-t border-border mt-8">
                                 <StatItem count={profile.stats.publications} label="Publications" />
                                 <StatItem count={profile.stats.projects} label="Projects" />
@@ -131,7 +131,7 @@ export default function HeroSection() {
                 </div>
 
                 {/* Research Interests - Full Width */}
-                <ScrollReveal variant="fadeUp" delay={1.1}>
+                <ScrollReveal variant="fadeUp" delay={0.8}>
                     <div className="mt-16 mb-20">
                         <h3 className="text-lg font-bold text-foreground mb-6 flex items-center justify-center gap-2">
                             <span className="w-1 h-5 bg-primary rounded-full" />
