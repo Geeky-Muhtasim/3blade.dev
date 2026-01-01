@@ -5,6 +5,7 @@ import { GraduationCap, Calendar, MapPin } from 'lucide-react'
 import { profile } from '@/data/profile'
 import SectionHeader from './SectionHeader'
 import { ScrollReveal } from './ScrollReveal'
+import { CardWithSlash } from './ui/CardWithSlash'
 
 export default function EducationSection() {
     return (
@@ -25,7 +26,11 @@ export default function EducationSection() {
                             delay={index * 0.1}
                             width="100%"
                         >
-                            <div className="bg-card border border-border rounded-lg p-8 hover:border-primary/30 transition-colors relative overflow-hidden group shadow-sm">
+                            <CardWithSlash
+                                className="bg-card border border-border rounded-lg p-8 hover:border-primary/30 relative overflow-hidden shadow-sm"
+                                glowIntensity="high"
+                            >
+                            <div className="relative overflow-hidden group">
                                 {/* Hover Glow */}
                                 <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
 
@@ -93,6 +98,7 @@ export default function EducationSection() {
                                     </div>
                                 </div>
                             </div>
+                            </CardWithSlash>
                         </ScrollReveal>
                     ))}
                 </div>

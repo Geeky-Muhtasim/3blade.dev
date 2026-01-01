@@ -7,6 +7,7 @@ import { useState } from 'react'
 import { cn } from '@/lib/utils'
 import SectionHeader from './SectionHeader'
 import { ScrollReveal } from './ScrollReveal'
+import { CardWithSlash } from './ui/CardWithSlash'
 
 export default function PublicationsSection() {
     const [filter, setFilter] = useState<string>('All')
@@ -54,20 +55,25 @@ export default function PublicationsSection() {
                 {/* Publications Grid */}
                 <div className="grid grid-cols-1 gap-8">
                     <AnimatePresence mode='popLayout'>
-                        {filteredPublications.map((pub) => (
-                            <motion.div
-                                layout
+                        {filteredPublications.map((pub, index) => (
+                            <ScrollReveal
                                 key={pub.id}
-                                initial={{ opacity: 0, y: 20 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                exit={{ opacity: 0, scale: 0.95 }}
-                                className={cn(
-                                    "group relative bg-card border rounded-lg overflow-hidden hover:shadow-md shadow-sm transition-all duration-200",
-                                    pub.authors.includes(profile.name) && (pub.authors[0] === profile.name || pub.authors[0] === profile.shortName)
-                                        ? "border-primary/50 border-l-4 border-l-primary"
-                                        : "border-border hover:border-primary/30"
-                                )}
+                                variant="fadeUp"
+                                delay={index * 0.1}
+                                width="100%"
                             >
+                                <CardWithSlash
+                                    className={cn(
+                                        "bg-card border rounded-lg overflow-hidden shadow-sm",
+                                        pub.authors.includes(profile.name) && (pub.authors[0] === profile.name || pub.authors[0] === profile.shortName)
+                                            ? "border-primary/50 border-l-4 border-l-primary"
+                                            : "border-border hover:border-primary/30"
+                                    )}
+                                    glowIntensity="medium"
+                                >
+                                <motion.div
+                                    layout
+                                >
                                 <div className="p-6 md:p-7">
                                     <div className="flex flex-col md:flex-row gap-6 justify-between items-start">
                                         <div className="flex-1">
@@ -182,6 +188,8 @@ export default function PublicationsSection() {
                                     </AnimatePresence>
                                 </div>
                             </motion.div>
+                            </CardWithSlash>
+                            </ScrollReveal>
                         ))}
                     </AnimatePresence>
                 </div>

@@ -2,52 +2,61 @@
 
 import { motion, useInView, UseInViewOptions } from "framer-motion"
 import { useRef } from "react"
+import {
+    fadeUpVariants,
+    fadeInVariants,
+    scaleInVariants,
+    slideRightVariants,
+    slideLeftVariants,
+    slashInVariants,
+    hakiPulseVariants,
+    animationConfig,
+    getAnimationConfig,
+} from "@/lib/animations"
 
 interface ScrollRevealProps {
     children: React.ReactNode
     width?: "fit-content" | "100%"
     delay?: number
     duration?: number
-    variant?: "fadeUp" | "fadeIn" | "scaleIn" | "slideRight" | "slideLeft"
+    variant?: "fadeUp" | "fadeIn" | "scaleIn" | "slideRight" | "slideLeft" | "slashIn" | "hakiPulse"
     className?: string
     viewport?: UseInViewOptions
-    staggerChildren?: number
 }
 
 export function ScrollReveal({
     children,
     width = "fit-content",
     delay = 0,
-    duration = 0.5,
+    duration,
     variant = "fadeUp",
     className = "",
-    viewport = { once: true, margin: "-50px" }
+    viewport
 }: ScrollRevealProps) {
     const ref = useRef(null)
-    const isInView = useInView(ref, viewport)
+    const config = getAnimationConfig()
+    
+    // Use provided viewport or default from config
+    const viewportSettings: UseInViewOptions = viewport || {
+        once: config.viewport.once,
+        margin: config.viewport.margin as any,
+        amount: config.viewport.amount as any,
+    }
+    
+    const isInView = useInView(ref, viewportSettings)
 
     const variants = {
-        fadeUp: {
-            hidden: { opacity: 0, y: 30 },
-            visible: { opacity: 1, y: 0 }
-        },
-        fadeIn: {
-            hidden: { opacity: 0 },
-            visible: { opacity: 1 }
-        },
-        scaleIn: {
-            hidden: { opacity: 0, scale: 0.8 },
-            visible: { opacity: 1, scale: 1 }
-        },
-        slideRight: {
-            hidden: { opacity: 0, x: -50 },
-            visible: { opacity: 1, x: 0 }
-        },
-        slideLeft: {
-            hidden: { opacity: 0, x: 50 },
-            visible: { opacity: 1, x: 0 }
-        }
+        fadeUp: fadeUpVariants,
+        fadeIn: fadeInVariants,
+        scaleIn: scaleInVariants,
+        slideRight: slideRightVariants,
+        slideLeft: slideLeftVariants,
+        slashIn: slashInVariants,
+        hakiPulse: hakiPulseVariants,
     }
+
+    // Use provided duration or default from config
+    const animDuration = duration ?? config.duration.normal
 
     return (
         <motion.div
@@ -55,7 +64,11 @@ export function ScrollReveal({
             variants={variants[variant]}
             initial="hidden"
             animate={isInView ? "visible" : "hidden"}
-            transition={{ duration, delay, ease: "easeOut" }}
+            transition={{ 
+                duration: animDuration, 
+                delay, 
+                ease: config.ease.smooth 
+            }}
             className={className}
             style={{ width }}
         >

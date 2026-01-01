@@ -1,21 +1,44 @@
 "use client"
 
-import { motion } from 'framer-motion'
+import { motion, useScroll, useTransform } from 'framer-motion'
 import { Github, Linkedin, Mail, BookOpen, Brain, Network, Eye, Shield } from 'lucide-react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { profile } from '@/data/profile'
 import { ScrollReveal } from './ScrollReveal'
+import { useRef } from 'react'
 
 export default function HeroSection() {
+    const sectionRef = useRef<HTMLElement>(null)
+    
+    // Parallax scroll effect
+    const { scrollYProgress } = useScroll({
+        target: sectionRef,
+        offset: ["start start", "end start"]
+    })
+    
+    // Transform values for parallax layers
+    const backgroundY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"])
+    const contentY = useTransform(scrollYProgress, [0, 1], ["0%", "15%"])
+    const imageScale = useTransform(scrollYProgress, [0, 1], [1, 1.1])
+    
     return (
-        <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
-            {/* Background Elements */}
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,_#ffffff,_#f0f7f3)] dark:bg-zoro-gradient opacity-90 z-0" />
-            <div className="absolute inset-0 dark:bg-slash-pattern opacity-20 z-0" />
+        <section ref={sectionRef} className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
+            {/* Background Elements with Parallax */}
+            <motion.div 
+                style={{ y: backgroundY }}
+                className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,_#ffffff,_#f0f7f3)] dark:bg-zoro-gradient opacity-90 z-0" 
+            />
+            <motion.div 
+                style={{ y: backgroundY }}
+                className="absolute inset-0 dark:bg-slash-pattern opacity-20 z-0" 
+            />
 
             {/* Content Container */}
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+            <motion.div 
+                style={{ y: contentY }}
+                className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full"
+            >
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
 
                     {/* Text Content */}
@@ -58,18 +81,41 @@ export default function HeroSection() {
                                     <motion.button
                                         whileHover={{ scale: 1.05 }}
                                         whileTap={{ scale: 0.95 }}
-                                        className="px-8 py-3 bg-primary text-primary-foreground font-bold rounded hover:bg-primary/90 transition-colors shadow-lg shadow-primary/20 border border-primary"
+                                        className="relative px-8 py-3 bg-primary text-primary-foreground font-bold rounded hover:bg-primary/90 transition-colors shadow-lg shadow-primary/20 border border-primary overflow-hidden group"
                                     >
-                                        View Research
+                                        <span className="relative z-10">View Research</span>
+                                        {/* Ripple effect on hover */}
+                                        <motion.span
+                                            className="absolute inset-0 bg-white/20"
+                                            initial={{ scale: 0, opacity: 0.5 }}
+                                            whileHover={{ scale: 2, opacity: 0 }}
+                                            transition={{ duration: 0.6 }}
+                                        />
                                     </motion.button>
                                 </Link>
                                 <a href="/cv.pdf" target="_blank" rel="noopener noreferrer">
                                     <motion.button
                                         whileHover={{ scale: 1.05 }}
                                         whileTap={{ scale: 0.95 }}
-                                        className="px-8 py-3 bg-transparent text-primary font-bold rounded border border-primary hover:bg-primary/10 transition-colors"
+                                        className="relative px-8 py-3 bg-transparent text-primary font-bold rounded border border-primary hover:bg-primary/10 transition-colors overflow-hidden group"
                                     >
-                                        Download CV
+                                        <span className="relative z-10">Download CV</span>
+                                        {/* Border glow on hover */}
+                                        <motion.span
+                                            className="absolute inset-0 border-2 border-primary rounded"
+                                            animate={{
+                                                boxShadow: [
+                                                    "0 0 0 rgba(34, 197, 94, 0)",
+                                                    "0 0 15px rgba(34, 197, 94, 0.4)",
+                                                    "0 0 0 rgba(34, 197, 94, 0)",
+                                                ]
+                                            }}
+                                            transition={{
+                                                duration: 2,
+                                                repeat: Infinity,
+                                                ease: "easeInOut"
+                                            }}
+                                        />
                                     </motion.button>
                                 </a>
                             </div>
@@ -95,23 +141,24 @@ export default function HeroSection() {
                         </ScrollReveal>
                     </div>
 
-                    {/* Image/Visual Content */}
+                    {/* Image/Visual Content with Parallax */}
                     <motion.div
                         initial={{ opacity: 0, scale: 0.8 }}
                         animate={{ opacity: 1, scale: 1 }}
+                        style={{ scale: imageScale }}
                         transition={{ duration: 0.8, delay: 0.2 }}
                         className="relative mx-auto flex justify-center items-center"
                     >
                         <div className="relative w-72 h-72 md:w-96 md:h-96 lg:w-[28rem] lg:h-[28rem]">
-                            {/* Rotating Rings/Swords Effect */}
+                            {/* Rotating Rings/Swords Effect - Different speeds for depth */}
                             <motion.div
                                 animate={{ rotate: 360 }}
-                                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                                transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
                                 className="absolute inset-0 border-2 border-dashed border-primary/30 rounded-full"
                             />
                             <motion.div
                                 animate={{ rotate: -360 }}
-                                transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+                                transition={{ duration: 18, repeat: Infinity, ease: "linear" }}
                                 className="absolute inset-4 border border-primary/20 rounded-full"
                             />
 
@@ -137,18 +184,19 @@ export default function HeroSection() {
                             <span className="w-1 h-5 bg-primary rounded-full" />
                             Research Interests
                         </h3>
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 auto-rows-fr">
                             {profile.researchInterests.map((interest, index) => (
-                                <motion.div
+                                <ScrollReveal
                                     key={index}
-                                    initial={{ opacity: 0, y: 10 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
-                                    viewport={{ once: true }}
-                                    transition={{ delay: index * 0.1 }}
-                                    whileHover={{ scale: 1.05 }}
-                                    className="bg-muted/30 border border-border rounded-lg p-6 hover:border-primary/30 hover:shadow-md transition-all cursor-default text-center"
+                                    variant="scaleIn"
+                                    delay={0.1 * index}
+                                    width="100%"
                                 >
-                                    <div className="flex flex-col items-center gap-4">
+                                    <motion.div
+                                        whileHover={{ scale: 1.05 }}
+                                        className="bg-muted/30 border border-border rounded-lg p-6 hover:border-primary/30 hover:shadow-md transition-all cursor-default text-center h-full flex flex-col"
+                                    >
+                                    <div className="flex flex-col items-center gap-4 flex-grow justify-center">
                                         <div className="text-primary">
                                             {getResearchIcon(interest.icon)}
                                         </div>
@@ -162,11 +210,12 @@ export default function HeroSection() {
                                         </div>
                                     </div>
                                 </motion.div>
+                                </ScrollReveal>
                             ))}
                         </div>
                     </div>
                 </ScrollReveal>
-            </div>
+            </motion.div>
         </section>
     )
 }

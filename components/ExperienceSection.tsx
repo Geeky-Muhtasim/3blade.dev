@@ -1,13 +1,32 @@
 "use client"
 
-import { motion } from 'framer-motion'
+import { motion, useScroll, useSpring, useTransform } from 'framer-motion'
 import { Briefcase, GraduationCap, Sword, Book, Shield, Globe, MapPin } from 'lucide-react'
 import { profile } from '@/data/profile'
 import { cn } from '@/lib/utils'
 import SectionHeader from './SectionHeader'
 import { ScrollReveal } from './ScrollReveal'
+import { useRef } from 'react'
 
 export default function ExperienceSection() {
+    const containerRef = useRef<HTMLDivElement>(null)
+    
+    // Track scroll progress through the experience section
+    const { scrollYProgress } = useScroll({
+        target: containerRef,
+        offset: ["start center", "end center"]
+    })
+    
+    // Smooth spring animation for the timeline
+    const springProgress = useSpring(scrollYProgress, {
+        stiffness: 100,
+        damping: 30,
+        restDelta: 0.001
+    })
+    
+    // Transform progress to height percentage
+    const timelineHeight = useTransform(springProgress, [0, 1], ["0%", "100%"])
+    
     // Helper to get thematic icon
     const getIcon = (role: string, org: string) => {
         if (role.includes('Cyber') || role.includes('Security')) return <Shield size={20} />
@@ -17,7 +36,7 @@ export default function ExperienceSection() {
     }
 
     return (
-        <section id="experience" className="py-24 lg:py-32 relative">
+        <section id="experience" className="py-24 lg:py-32 relative" ref={containerRef}>
 
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                 <ScrollReveal variant="fadeUp" className="mb-12" width="100%">
@@ -28,26 +47,48 @@ export default function ExperienceSection() {
                 </ScrollReveal>
 
                 <div className="relative">
-                    {/* Vertical Line with Glow */}
-                    <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary/20 via-primary to-primary/20 shadow-[0_0_12px_rgba(34,197,94,0.4)] transform -translate-x-1/2" />
+                    {/* Static Background Line */}
+                    <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-0.5 bg-border/40 transform -translate-x-1/2" />
+                    
+                    {/* Animated Vertical Line with Glow - Draws as you scroll */}
+                    <motion.div 
+                        className="absolute left-4 md:left-1/2 top-0 w-0.5 bg-gradient-to-b from-primary/20 via-primary to-primary/20 shadow-[0_0_12px_rgba(34,197,94,0.4)] transform -translate-x-1/2 origin-top"
+                        style={{ height: timelineHeight }}
+                    />
 
                     <div className="space-y-12">
                         {profile.experience.map((exp, index) => (
-                            <motion.div
+                            <ScrollReveal
                                 key={exp.id}
-                                initial={{ opacity: 0, y: 40 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true, margin: "-50px" }}
-                                transition={{ duration: 0.5, delay: index * 0.1 }}
-                                className={cn(
-                                    "relative flex flex-col md:flex-row gap-8",
-                                    index % 2 === 0 ? "md:flex-row-reverse" : ""
-                                )}
+                                variant="fadeUp"
+                                delay={index * 0.1}
+                                width="100%"
                             >
+                                <div
+                                    className={cn(
+                                        "relative flex flex-col md:flex-row gap-8",
+                                        index % 2 === 0 ? "md:flex-row-reverse" : ""
+                                    )}
+                                >
                                 {/* Timeline Node */}
-                                <div className="absolute left-4 md:left-1/2 w-10 h-10 bg-background border-2 border-primary rounded-full transform -translate-x-1/2 mt-6 z-10 flex items-center justify-center text-primary shadow-[0_0_15px_rgba(34,197,94,0.6)]">
+                                <motion.div 
+                                    className="absolute left-4 md:left-1/2 w-10 h-10 bg-background border-2 border-primary rounded-full transform -translate-x-1/2 mt-6 z-10 flex items-center justify-center text-primary shadow-[0_0_15px_rgba(34,197,94,0.6)]"
+                                    initial={{ scale: 0, rotate: -180 }}
+                                    whileInView={{ scale: 1, rotate: 0 }}
+                                    viewport={{ once: true, margin: "-100px" }}
+                                    transition={{ 
+                                        duration: 0.5, 
+                                        delay: 0.2,
+                                        type: "spring",
+                                        stiffness: 200
+                                    }}
+                                    whileHover={{ 
+                                        scale: 1.2,
+                                        boxShadow: "0 0 25px rgba(34,197,94,0.8)"
+                                    }}
+                                >
                                     {getIcon(exp.role, exp.organization)}
-                                </div>
+                                </motion.div>
 
                                 {/* Content Card */}
                                 <div className="ml-12 md:ml-0 md:w-1/2 md:px-8">
@@ -101,7 +142,8 @@ export default function ExperienceSection() {
 
                                 {/* Empty Space for alternate side */}
                                 <div className="hidden md:block md:w-1/2" />
-                            </motion.div>
+                            </div>
+                            </ScrollReveal>
                         ))}
                     </div>
                 </div>

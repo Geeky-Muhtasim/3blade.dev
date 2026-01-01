@@ -54,7 +54,8 @@ export default function StartupLoader() {
             initial={{ opacity: 1 }}
             exit={{ opacity: 0, filter: "blur(20px)" }}
             transition={{ duration: 0.8, ease: "easeInOut" }}
-            className="fixed inset-0 z-50 flex items-center justify-center bg-[#020403] overflow-hidden"
+            className="fixed inset-0 z-50 flex items-center justify-center bg-background overflow-hidden"
+            style={{ backgroundColor: "hsl(var(--background))" }}
         >
             {/* Background Grid - Darker for contrast */}
             <div className="absolute inset-0 bg-[linear-gradient(to_right,#14532d05_1px,transparent_1px),linear-gradient(to_bottom,#14532d05_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_80%_80%_at_50%_50%,#000_40%,transparent_100%)]" />
@@ -80,9 +81,9 @@ export default function StartupLoader() {
                         </filter>
                         <linearGradient id="slashGradient" x1="0%" y1="0%" x2="100%" y2="100%">
                             <stop offset="0%" stopColor="transparent" />
-                            <stop offset="20%" stopColor="#22c55e" />
-                            <stop offset="50%" stopColor="#ffffff" />
-                            <stop offset="80%" stopColor="#22c55e" />
+                            <stop offset="20%" stopColor="hsl(var(--primary))" style={{ stopColor: "hsl(var(--primary))" }} />
+                            <stop offset="50%" stopColor="white" />
+                            <stop offset="80%" stopColor="hsl(var(--primary))" style={{ stopColor: "hsl(var(--primary))" }} />
                             <stop offset="100%" stopColor="transparent" />
                         </linearGradient>
                     </defs>
@@ -112,7 +113,7 @@ export default function StartupLoader() {
                     <motion.path
                         d="M -10,110 Q 45,55 110,-10"
                         fill="none"
-                        stroke="#22c55e"
+                        stroke="hsl(var(--primary))"
                         strokeWidth="0.5"
                         initial={{ pathLength: 0, opacity: 0 }}
                         animate={{ pathLength: [0, 1], opacity: [0, 0.5, 0] }}

@@ -7,6 +7,7 @@ import { useState } from 'react'
 import { cn } from '@/lib/utils'
 import SectionHeader from './SectionHeader'
 import { ScrollReveal } from './ScrollReveal'
+import { CardWithSlash } from './ui/CardWithSlash'
 
 export default function ProjectsSection() {
     const [filter, setFilter] = useState<string>('All')
@@ -50,18 +51,23 @@ export default function ProjectsSection() {
                 </ScrollReveal>
 
                 {/* Projects Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 auto-rows-fr">
                     <AnimatePresence mode='popLayout'>
                         {filteredProjects.map((project, index) => (
-                            <motion.div
-                                layout
+                            <ScrollReveal
                                 key={project.id}
-                                initial={{ opacity: 0, scale: 0.9 }}
-                                animate={{ opacity: 1, scale: 1 }}
-                                exit={{ opacity: 0, scale: 0.9 }}
-                                transition={{ duration: 0.3 }}
-                                className="bg-card border border-border rounded-lg overflow-hidden hover:shadow-md shadow-sm transition-all duration-300 group flex flex-col h-full hover:border-primary/30"
+                                variant="fadeUp"
+                                delay={index * 0.1}
+                                width="100%"
                             >
+                                <CardWithSlash
+                                    className="bg-card border border-border rounded-lg overflow-hidden shadow-sm hover:border-primary/30 h-full"
+                                    glowIntensity="medium"
+                                >
+                                <motion.div
+                                    layout
+                                    className="group flex flex-col h-full min-h-[360px]"
+                                >
                                 <div className="p-6 flex flex-col h-full">
                                     <div className="flex justify-between items-start mb-4">
                                         <div className="p-3 bg-muted rounded-lg text-primary group-hover:scale-110 transition-transform">
@@ -72,11 +78,11 @@ export default function ProjectsSection() {
                                         </span>
                                     </div>
 
-                                    <h3 className="text-xl font-bold text-foreground mb-2 group-hover:text-primary transition-colors">
+                                    <h3 className="text-xl font-bold text-foreground mb-2 group-hover:text-primary transition-colors line-clamp-2">
                                         {project.title}
                                     </h3>
 
-                                    <p className="text-muted-foreground text-sm line-clamp-3 mb-4 flex-grow">
+                                    <p className="text-muted-foreground text-sm line-clamp-4 mb-4 flex-grow">
                                         {project.description}
                                     </p>
 
@@ -121,6 +127,8 @@ export default function ProjectsSection() {
                                     </div>
                                 </div>
                             </motion.div>
+                            </CardWithSlash>
+                            </ScrollReveal>
                         ))}
                     </AnimatePresence>
                 </div>

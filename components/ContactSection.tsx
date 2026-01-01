@@ -75,44 +75,52 @@ export default function ContactSection() {
                                 Connect with me
                             </h4>
                             <div className="flex gap-4">
-                                <a
+                                <motion.a
                                     href={profile.socials.github}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="p-3 bg-muted rounded-lg text-muted-foreground hover:text-white hover:bg-primary transition-all hover:-translate-y-1 hover:shadow-lg hover:shadow-primary/20"
+                                    className="p-3 bg-muted rounded-lg text-muted-foreground hover:text-white hover:bg-primary transition-all"
+                                    whileHover={{ y: -4, boxShadow: "0 8px 20px rgba(34,197,94,0.3)" }}
+                                    whileTap={{ scale: 0.95 }}
                                     aria-label="GitHub"
                                 >
                                     <Github size={24} />
-                                </a>
-                                <a
+                                </motion.a>
+                                <motion.a
                                     href={profile.socials.linkedin}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="p-3 bg-muted rounded-lg text-muted-foreground hover:text-white hover:bg-[#0077b5] transition-all hover:-translate-y-1 hover:shadow-lg hover:shadow-blue-500/20"
+                                    className="p-3 bg-muted rounded-lg text-muted-foreground hover:text-white hover:bg-[#0077b5] transition-all"
+                                    whileHover={{ y: -4, boxShadow: "0 8px 20px rgba(0,119,181,0.3)" }}
+                                    whileTap={{ scale: 0.95 }}
                                     aria-label="LinkedIn"
                                 >
                                     <Linkedin size={24} />
-                                </a>
+                                </motion.a>
                                 {profile.socials.twitter && (
-                                    <a
+                                    <motion.a
                                         href={profile.socials.twitter}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="p-3 bg-muted rounded-lg text-muted-foreground hover:text-white hover:bg-[#1DA1F2] transition-all hover:-translate-y-1 hover:shadow-lg hover:shadow-sky-500/20"
+                                        className="p-3 bg-muted rounded-lg text-muted-foreground hover:text-white hover:bg-[#1DA1F2] transition-all"
+                                        whileHover={{ y: -4, boxShadow: "0 8px 20px rgba(29,161,242,0.3)" }}
+                                        whileTap={{ scale: 0.95 }}
                                         aria-label="Twitter"
                                     >
                                         <Twitter size={24} />
-                                    </a>
+                                    </motion.a>
                                 )}
-                                <a
+                                <motion.a
                                     href={profile.socials.scholar}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="p-3 bg-muted rounded-lg text-muted-foreground hover:text-white hover:bg-[#4285F4] transition-all hover:-translate-y-1 hover:shadow-lg hover:shadow-blue-500/20"
+                                    className="p-3 bg-muted rounded-lg text-muted-foreground hover:text-white hover:bg-[#4285F4] transition-all"
+                                    whileHover={{ y: -4, boxShadow: "0 8px 20px rgba(66,133,244,0.3)" }}
+                                    whileTap={{ scale: 0.95 }}
                                     aria-label="Google Scholar"
                                 >
                                     <GraduationCap size={24} />
-                                </a>
+                                </motion.a>
                             </div>
                         </div>
                     </ScrollReveal>
@@ -175,10 +183,18 @@ export default function ContactSection() {
                                 </div>
                                 <button
                                     type="submit"
-                                    className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-bold py-4 rounded-lg transition-all transform hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-2 shadow-lg shadow-primary/20"
+                                    className="relative w-full bg-primary hover:bg-primary/90 text-primary-foreground font-bold py-4 rounded-lg transition-all transform hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-2 shadow-lg shadow-primary/20 overflow-hidden group"
                                 >
-                                    <Send size={20} />
-                                    Send Message
+                                    <Send size={20} className="relative z-10" />
+                                    <span className="relative z-10">Send Message</span>
+                                    
+                                    {/* Ripple effect */}
+                                    <motion.span
+                                        className="absolute inset-0 bg-white/20 rounded-full"
+                                        initial={{ scale: 0, opacity: 0.5 }}
+                                        whileHover={{ scale: 2.5, opacity: 0 }}
+                                        transition={{ duration: 0.6 }}
+                                    />
                                 </button>
                             </form>
                         </div>
