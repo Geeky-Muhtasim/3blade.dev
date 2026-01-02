@@ -35,11 +35,12 @@ export default function HeroSection() {
             />
 
             {/* Content Container */}
-            <motion.div 
-                style={{ y: contentY }}
-                className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full"
-            >
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+                {/* Main Hero Content with Parallax */}
+                <motion.div 
+                    style={{ y: contentY }}
+                    className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center"
+                >
 
                     {/* Text Content */}
                     <div className="space-y-8 text-center lg:text-left">
@@ -175,9 +176,9 @@ export default function HeroSection() {
                             </div>
                         </div>
                     </motion.div>
-                </div>
+                </motion.div>
 
-                {/* Research Interests - Full Width */}
+                {/* Research Interests - Full Width - No Parallax */}
                 <ScrollReveal variant="fadeUp" delay={0.8}>
                     <div className="mt-16 mb-20">
                         <h3 className="text-lg font-bold text-foreground mb-6 flex items-center justify-center gap-2">
@@ -215,7 +216,7 @@ export default function HeroSection() {
                         </div>
                     </div>
                 </ScrollReveal>
-            </motion.div>
+            </div>
         </section>
     )
 }
